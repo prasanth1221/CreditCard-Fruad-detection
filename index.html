@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card Fraud Detection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f7f7f7;
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        form {
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: auto;
+        }
+        
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        input[type="number"], input[type="submit"] {
+            margin-bottom: 15px;
+            padding: 12px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 600px) {
+            form {
+                width: 90%;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Credit Card Fraud Detection</h1>
+    <form action="/predict" method="POST">
+        <!-- Input fields for each feature -->
+        <label for="Time">Time:</label>
+        <input type="number" id="Time" name="Time" required>
+        
+        <label for="V1">V1:</label>
+        <input type="number" id="V1" name="V1" required>
+
+        <label for="V2">V2:</label>
+        <input type="number" id="V2" name="V2" required>
+
+        <label for="V3">V3:</label>
+        <input type="number" id="V3" name="V3" required>
+
+        <label for="V4">V4:</label>
+        <input type="number" id="V4" name="V4" required>
+
+        <label for="V5">V5:</label>
+        <input type="number" id="V5" name="V5" required>
+
+        <label for="V6">V6:</label>
+        <input type="number" id="V6" name="V6" required>
+
+        <label for="V7">V7:</label>
+        <input type="number" id="V7" name="V7" required>
+
+        <label for="V8">V8:</label>
+        <input type="number" id="V8" name="V8" required>
+
+        <label for="V9">V9:</label>
+        <input type="number" id="V9" name="V9" required>
+
+        <label for="V10">V10:</label>
+        <input type="number" id="V10" name="V10" required>
+
+        <label for="V11">V11:</label>
+        <input type="number" id="V11" name="V11" required>
+
+        <label for="V12">V12:</label>
+        <input type="number" id="V12" name="V12" required>
+
+        <label for="V13">V13:</label>
+        <input type="number" id="V13" name="V13" required>
+
+        <label for="V14">V14:</label>
+        <input type="number" id="V14" name="V14" required>
+
+        <label for="V15">V15:</label>
+        <input type="number" id="V15" name="V15" required>
+
+        <label for="V16">V16:</label>
+        <input type="number" id="V16" name="V16" required>
+
+        <label for="V17">V17:</label>
+        <input type="number" id="V17" name="V17" required>
+
+        <label for="V18">V18:</label>
+        <input type="number" id="V18" name="V18" required>
+
+        <label for="V19">V19:</label>
+        <input type="number" id="V19" name="V19" required>
+
+        <label for="V20">V20:</label>
+        <input type="number" id="V20" name="V20" required>
+
+        <label for="V21">V21:</label>
+        <input type="number" id="V21" name="V21" required>
+
+        <label for="V22">V22:</label>
+        <input type="number" id="V22" name="V22" required>
+
+        <label for="V23">V23:</label>
+        <input type="number" id="V23" name="V23" required>
+
+        <label for="V24">V24:</label>
+        <input type="number" id="V24" name="V24" required>
+
+        <label for="V25">V25:</label>
+        <input type="number" id="V25" name="V25" required>
+
+        <label for="V26">V26:</label>
+        <input type="number" id="V26" name="V26" required>
+
+        <label for="V27">V27:</label>
+        <input type="number" id="V27" name="V27" required>
+
+        <label for="V28">V28:</label>
+        <input type="number" id="V28" name="V28" required>
+
+        <label for="Amount">Amount:</label>
+        <input type="number" id="Amount" name="Amount" required>
+        
+        <input type="submit" value="Predict">
+    </form>
+    <script>
+        const form = document.querySelector('form');
+        
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent the default form submission
+    
+            const formData = new FormData(form);
+            
+            fetch('/predict', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display the prediction result
+                const message = data.prediction === 0 ? 'Legal Transaction' : 'Illegal Transaction';
+                alert(message);
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+    
+</body>
+</html>
